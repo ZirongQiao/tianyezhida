@@ -1,0 +1,225 @@
+<wxs module="cat">
+var isSelected = function(list, item) {
+  if (!list || !list.length) return false;
+  for (var i = 0; i < list.length; i++) {
+    if (list[i] === item) return true;
+  }
+  return false;
+};
+var isEggIconLarge = function(name) {
+  return name === "鸡蛋" || name === "鸭蛋";
+};
+module.exports.isSelected = isSelected;
+module.exports.isEggIconLarge = isEggIconLarge;
+</wxs>
+
+<view class="map-page">
+  <map
+    id="mainMap"
+    class="main-map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    scale="{{scale}}"
+    markers="{{markers}}"
+    show-location
+    enable-scroll
+    enable-zoom
+    bindmarkertap="onMarkerTap"
+    bindcallouttap="onCalloutTap"
+  />
+
+  <view class="top-panel" style="padding-top: {{statusBarHeight}}px;">
+    <view class="top-row row-brand">
+      <view class="brand-left">
+        <image
+          class="brand-nav-logo"
+          src="/images/logo-nav.svg"
+          mode="aspectFit"
+          bindtap="onLogoTap"
+        />
+      </view>
+    </view>
+
+    <view
+      class="category-panel"
+      bindtouchstart="onCategoryTouchStart"
+      bindtouchmove="onCategoryTouchMove"
+      bindtouchend="onCategoryTouchEnd"
+    >
+      <block wx:if="{{categoryExpanded}}">
+        <view class="category-wrap">
+          <view
+            wx:for="{{categories}}"
+            wx:key="name"
+            class="category-card {{cat.isSelected(selectedCategories, item.name) ? 'active' : ''}}"
+            data-category="{{item.name}}"
+            bindtap="onCategoryTap"
+          >
+            <image
+              class="category-icon {{cat.isEggIconLarge(item.name) ? 'egg-icon-large' : ''}}"
+              src="{{item.icon}}"
+              mode="aspectFit"
+            />
+            <text class="category-name">{{item.name}}</text>
+          </view>
+        </view>
+        <view class="category-toggle-bar" bindtap="onCollapseCategories">
+          <text class="category-toggle-arrow">▲</text>
+        </view>
+      </block>
+      <view wx:else class="category-toggle-bar" bindtap="onExpandCategories">
+        <text class="category-toggle-label">选择农产品</text>
+        <text class="category-toggle-arrow category-toggle-arrow--down">▼</text>
+      </view>
+    </view>
+  </view>
+
+  <view
+    wx:if="{{showCard && selectedFarmer}}"
+    class="farmer-card {{cardSlideIn ? 'farmer-card--visible' : ''}}"
+  >
+    <view class="farmer-card-close" catchtap="onCloseCard">✕</view>
+
+    <view class="farmer-card-body" bindtap="onCardTap">
+    <view class="farmer-card-content">
+      <view class="farmer-avatar">
+        <image
+          wx:if="{{selectedFarmer.avatarUrl}}"
+          class="farmer-avatar-img"
+          src="{{selectedFarmer.avatarUrl}}"
+          mode="aspectFill"
+        />
+        <text wx:else class="farmer-avatar-text">{{selectedFarmer.avatarInitial}}</text>
+      </view>
+      <view class="farmer-info">
+        <view class="farmer-name-row">
+          <text class="farmer-name">{{selectedFarmer.name}}</text>
+          <text
+            class="merchant-type-tag"
+            style="color: {{selectedFarmer.tagColor}}; background: {{selectedFarmer.tagBg}};"
+          >{{selectedFarmer.typeLabel}}</text>
+        </view>
+        <text class="farmer-distance">{{selectedFarmer.distanceText}}</text>
+        <view class="farmer-goods">
+          <text class="farmer-goods-label">今日可售：</text>
+          <view class="farmer-tags">
+            <view
+              wx:for="{{selectedFarmer.categories}}"
+              wx:key="*this"
+              class="farmer-tag"
+            >
+              {{item}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+
+    <view class="farmer-card-actions">
+      <button class="farmer-nav-btn" open-type="share">
+        <view class="farmer-btn-icon-badge">
+          <image
+            class="farmer-btn-icon-img"
+            src="/images/icons/share.svg"
+            mode="aspectFit"
+          />
+        </view>
+        <text>分享</text>
+      </button>
+      <view class="farmer-nav-btn" catchtap="onCardTap">
+        <view class="farmer-btn-icon-badge">
+          <image
+            class="farmer-btn-icon-img"
+            src="/images/icons/detail.svg"
+            mode="aspectFit"
+          />
+        </view>
+        <text>详情</text>
+      </view>
+      <view class="farmer-nav-btn" catchtap="onNavigate">
+        <view class="farmer-btn-icon-badge">
+          <image
+            class="farmer-btn-icon-img"
+            src="/images/icons/navigate.svg"
+            mode="aspectFit"
+          />
+        </view>
+        <text>导航</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showContactModal}}" class="contact-mask" bindtap="onCloseContact">
+    <view class="contact-box" catchtap="">
+      <view class="contact-close" bindtap="onCloseContact">✕</view>
+      <view class="contact-title">联系我们</view>
+
+      <image
+        src="/images/qrcode.png"
+        class="contact-qrcode"
+        mode="aspectFit"
+      />
+      <text class="contact-qrcode-tip">扫描添加客服微信</text>
+      <text class="contact-qrcode-tip2">投诉 · 建议 · 农户入驻审核</text>
+
+      <view class="contact-divider"></view>
+
+      <view class="contact-phone-row" bindtap="onCallPhone">
+        <text class="contact-phone-label">客服电话</text>
+        <text class="contact-phone-number">173-5851-2219</text>
+        <text class="contact-phone-icon">📞</text>
+      </view>
+      <text class="contact-phone-tip">工作日 9:00 - 18:00</text>
+    </view>
+  </view>
+
+  <view
+    wx:if="{{showLogoPreview}}"
+    class="logo-preview-mask logo-preview-mask--visible"
+    bindtap="closeLogoPreview"
+  >
+    <view class="logo-preview-content" catchtap="">
+      <image
+        class="logo-preview-image"
+        src="/images/logo-nav.svg"
+        mode="aspectFit"
+      />
+    </view>
+  </view>
+
+  <view class="map-fab-capsule">
+    <view
+      class="map-fab-item"
+      catchtap="onFabFarmerTap"
+      hover-class="map-fab-item--hover"
+      hover-stay-time="120"
+    >
+      <view class="map-fab-item-inner">
+        <view class="map-fab-icon map-fab-icon--farmer" aria-hidden="true">
+          <view class="map-fab-icon-head"></view>
+          <view class="map-fab-icon-body"></view>
+        </view>
+        <view class="map-fab-text-col">
+          <text class="map-fab-text">农户</text>
+          <text class="map-fab-text">中心</text>
+        </view>
+      </view>
+    </view>
+    <view class="map-fab-divider"></view>
+    <view
+      class="map-fab-item"
+      catchtap="onFabContactTap"
+      hover-class="map-fab-item--hover"
+      hover-stay-time="120"
+    >
+      <view class="map-fab-item-inner">
+        <view class="map-fab-icon map-fab-icon--contact" aria-hidden="true"></view>
+        <view class="map-fab-text-col">
+          <text class="map-fab-text">联系</text>
+          <text class="map-fab-text">我们</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

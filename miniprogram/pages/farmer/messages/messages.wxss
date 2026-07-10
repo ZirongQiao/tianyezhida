@@ -1,0 +1,27 @@
+@import "../farmer-common.wxss";
+
+.message-card {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.message-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.message-time {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #999999;
+}
+
+.message-empty {
+  margin: 48px 16px;
+  font-size: 14px;
+  color: #999999;
+  text-align: center;
+}

@@ -1,0 +1,78 @@
+page {
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.farmer-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f5f5;
+}
+
+.farmer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 12px;
+  background: #ffffff;
+  box-sizing: content-box;
+  flex-shrink: 0;
+}
+
+.farmer-nav-back {
+  width: 44px;
+  font-size: 22px;
+  color: #333333;
+  line-height: 44px;
+}
+
+.farmer-nav-placeholder {
+  width: 44px;
+}
+
+.farmer-nav-title {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+}
+
+.farmer-nav-exit {
+  width: 44px;
+  font-size: 15px;
+  color: #999999;
+  line-height: 44px;
+  text-align: right;
+}
+
+.farmer-scroll {
+  flex: 1;
+  height: 0;
+}
+
+.farmer-card {
+  margin: 12px 16px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.farmer-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 50px;
+  margin: 24px auto;
+  font-size: 16px;
+  color: #ffffff;
+  background: #4caf50;
+  border-radius: 8px;
+}
+
+.farmer-btn-primary::after {
+  border: none;
+}

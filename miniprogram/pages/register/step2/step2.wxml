@@ -1,0 +1,166 @@
+<view class="register-page">
+  <view class="register-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="register-nav-back" bindtap="onBack">←</view>
+    <text class="register-nav-title">基本信息</text>
+    <text class="register-nav-step">2/3</text>
+  </view>
+
+  <view class="register-progress">
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg"></view>
+  </view>
+
+  <view class="register-card">
+    <view class="register-field">
+      <view class="register-label">商户类型</view>
+      <view class="type-row">
+        <view
+          class="type-card {{merchantType === 'farmer' ? 'type-card--active' : ''}}"
+          data-type="farmer"
+          bindtap="onTypeTap"
+        >
+          <text class="type-card-title">🏡 农户</text>
+          <text class="type-card-desc">家庭自产，位置模糊显示</text>
+        </view>
+        <view
+          class="type-card {{merchantType === 'business' ? 'type-card--active' : ''}}"
+          data-type="business"
+          bindtap="onTypeTap"
+        >
+          <text class="type-card-title">🏪 经营性商户</text>
+          <text class="type-card-desc">农场或实体店，位置精确显示</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="register-field">
+      <view class="register-label">商户名称</view>
+      <block wx:if="{{merchantType === 'farmer'}}">
+        <view class="name-input-row {{merchantNameInvalid ? 'field-input--invalid' : ''}}">
+          <input
+            class="name-input-field"
+            placeholder="{{namePlaceholder}}"
+            value="{{merchantName}}"
+            bindinput="onNameInput"
+            bindblur="onNameBlur"
+          />
+          <view class="name-suffix" aria-hidden="true">家</view>
+        </view>
+      </block>
+      <block wx:else>
+        <input
+          class="register-input {{merchantNameInvalid ? 'field-input--invalid' : ''}}"
+          placeholder="{{namePlaceholder}}"
+          value="{{merchantName}}"
+          bindinput="onNameInput"
+          bindblur="onNameBlur"
+        />
+      </block>
+      <text wx:if="{{merchantNameError}}" class="field-error">{{merchantNameError}}</text>
+    </view>
+
+    <view class="register-field">
+      <view class="register-label">联系电话</view>
+      <text class="contact-sub-label">手机号</text>
+      <view
+        wx:for="{{mobiles}}"
+        wx:key="id"
+        class="contact-block"
+      >
+        <view class="contact-row">
+          <input
+            class="register-input contact-row-input {{item.invalid ? 'field-input--invalid' : ''}}"
+            type="text"
+            maxlength="20"
+            placeholder="11位手机号，如 138 0000 0000"
+            value="{{item.value}}"
+            data-id="{{item.id}}"
+            bindinput="onMobileInput"
+            bindblur="onMobileBlur"
+          />
+          <text
+            wx:if="{{mobiles.length > 1}}"
+            class="contact-delete"
+            data-id="{{item.id}}"
+            catchtap="onDeleteMobile"
+          >删除</text>
+        </view>
+        <text wx:if="{{item.error}}" class="field-error">{{item.error}}</text>
+      </view>
+      <view class="contact-add-link" bindtap="onAddMobile">+ 添加手机号</view>
+
+      <text class="contact-sub-label contact-sub-label--landline">座机号</text>
+      <view
+        wx:for="{{landlines}}"
+        wx:key="id"
+        class="contact-block"
+      >
+        <view class="contact-row contact-row--landline">
+          <view class="landline-row">
+            <input
+              class="register-input landline-area {{item.areaInvalid ? 'field-input--invalid' : ''}}"
+              type="number"
+              maxlength="4"
+              placeholder="区号"
+              value="{{item.area}}"
+              data-id="{{item.id}}"
+              bindinput="onLandlineAreaInput"
+              bindblur="onLandlineBlur"
+            />
+            <text class="landline-dash">-</text>
+            <input
+              class="register-input landline-number {{item.numberInvalid ? 'field-input--invalid' : ''}}"
+              type="number"
+              maxlength="8"
+              placeholder="座机号码"
+              value="{{item.number}}"
+              data-id="{{item.id}}"
+              bindinput="onLandlineNumberInput"
+              bindblur="onLandlineBlur"
+            />
+          </view>
+          <text
+            wx:if="{{landlines.length > 1}}"
+            class="contact-delete"
+            data-id="{{item.id}}"
+            catchtap="onDeleteLandline"
+          >删除</text>
+        </view>
+        <text wx:if="{{item.areaError}}" class="field-error">{{item.areaError}}</text>
+        <text wx:elif="{{item.numberError}}" class="field-error">{{item.numberError}}</text>
+      </view>
+      <view class="contact-add-link" bindtap="onAddLandline">+ 添加座机</view>
+
+      <text wx:if="{{contactsFormError}}" class="field-error">{{contactsFormError}}</text>
+    </view>
+
+    <view class="register-field">
+      <view class="register-label">所在地区</view>
+      <picker mode="region" bindchange="onRegionChange">
+        <view class="register-picker {{regionInvalid ? 'field-input--invalid' : ''}}">
+          <text wx:if="{{regionText}}" class="register-picker-value">{{regionText}}</text>
+          <text wx:else class="register-picker-placeholder">请选择省市区</text>
+        </view>
+      </picker>
+      <text wx:if="{{regionError}}" class="field-error">{{regionError}}</text>
+    </view>
+
+    <view class="register-field">
+      <view class="register-label">详细地址</view>
+      <input
+        class="register-input {{addressInvalid ? 'field-input--invalid' : ''}}"
+        placeholder="{{addressPlaceholder}}"
+        value="{{address}}"
+        bindinput="onAddressInput"
+        bindblur="onAddressBlur"
+      />
+      <text wx:if="{{addressError}}" class="field-error">{{addressError}}</text>
+      <text wx:elif="{{merchantType === 'farmer'}}" class="address-hint">请填写可导航的详细地址。农户页面将隐藏门牌号，仅展示模糊位置。</text>
+    </view>
+  </view>
+
+  <view class="step2-footer">
+    <button class="register-btn-primary" bindtap="onNext">下一步</button>
+  </view>
+</view>

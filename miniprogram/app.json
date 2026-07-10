@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/map/map",
+    "pages/farmer-detail/farmer-detail",
+    "pages/farmer/home/home",
+    "pages/farmer/goods/goods",
+    "pages/farmer/profile/profile",
+    "pages/farmer/messages/messages",
+    "pages/farmer/claim/claim",
+    "pages/register/step1/step1",
+    "pages/register/step2/step2",
+    "pages/register/confirm-location/confirm-location",
+    "pages/register/step3/step3",
+    "pages/legal/legal"
+  ],
+  "window": {
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "田间直达",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于在地图上显示您的位置和周边农户"
+    }
+  },
+  "requiredPrivateInfos": ["getLocation"],
+  "navigateToMiniProgramAppIdList": [
+    "wx6185fdad38812f4d",
+    "wx7697e27ffced5aad",
+    "wx91d6dce07756540f"
+  ]
+}

@@ -1,0 +1,17 @@
+/**app.wxss**/
+page {
+  font-size: 16px;
+  background: #ffffff;
+}
+
+button {
+  background: initial;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button::after {
+  border: none;
+}

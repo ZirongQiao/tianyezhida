@@ -1,0 +1,167 @@
+@import "../register-common.wxss";
+
+.step3-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.step3-scroll {
+  flex: 1;
+  height: 0;
+}
+
+.step3-scroll-bottom {
+  height: 280rpx;
+}
+
+.step3-agreement-card {
+  margin-bottom: 0;
+}
+
+.step3-agreement-list {
+  margin-top: 8rpx;
+}
+
+.step3-agreement-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24rpx;
+}
+
+.step3-agreement-row:last-child {
+  margin-bottom: 0;
+}
+
+.step3-agreement-checkbox {
+  flex-shrink: 0;
+  margin-top: 4rpx;
+  transform: scale(0.85);
+  transform-origin: left top;
+}
+
+.step3-agreement-text {
+  flex: 1;
+  margin-left: 12rpx;
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.step3-agreement-link {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+.card-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333333;
+  line-height: 1.3;
+}
+
+.card-desc {
+  display: block;
+  margin-top: 8rpx;
+  margin-bottom: 24rpx;
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 1.3;
+}
+
+.photo-row {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.photo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 200rpx;
+  border: 2rpx dashed #dddddd;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.photo-plus {
+  font-size: 48rpx;
+  color: #cccccc;
+  line-height: 1;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-row {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160rpx;
+  height: 160rpx;
+  border: 2rpx dashed #dddddd;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.avatar-label {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.category-list {
+  margin-top: 8rpx;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.category-row:last-child {
+  border-bottom: none;
+}
+
+.category-name {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.step3-footer {
+  flex-shrink: 0;
+  padding: 24rpx 0 calc(24rpx + env(safe-area-inset-bottom));
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.step3-footer .register-btn-primary {
+  width: 90%;
+}
+
+.step3-tip {
+  display: block;
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  color: #999999;
+  text-align: center;
+}

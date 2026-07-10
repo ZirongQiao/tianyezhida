@@ -1,0 +1,37 @@
+<view class="register-page confirm-location-page">
+  <view class="register-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="register-nav-back" bindtap="onBack">←</view>
+    <text class="register-nav-title">确认位置</text>
+    <text class="register-nav-step">3/4</text>
+  </view>
+
+  <view class="register-progress">
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg"></view>
+  </view>
+
+  <view class="confirm-map-wrap">
+    <map
+      id="confirmMap"
+      class="confirm-map"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      scale="{{scale}}"
+      show-location
+      enable-scroll
+      enable-zoom
+    />
+    <view class="confirm-pin">
+      <view class="confirm-pin-head"></view>
+      <view class="confirm-pin-tail"></view>
+    </view>
+  </view>
+
+  <text class="confirm-hint">如果定位不准确，请拖动地图，让图钉对准实际位置</text>
+
+  <view class="confirm-footer">
+    <button class="register-btn-primary" bindtap="onConfirm">确认位置</button>
+  </view>
+</view>

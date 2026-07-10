@@ -1,0 +1,53 @@
+<view class="step1-page">
+  <view class="step1-header">
+    <view class="step1-brand">
+      <image
+        class="step1-brand-logo"
+        src="/images/logo-nav.svg"
+        mode="aspectFit"
+      />
+    </view>
+  </view>
+
+  <view class="step1-body">
+    <text class="step1-question">您是否已注册农户/商户？</text>
+
+    <view class="step1-actions">
+      <button
+        class="step1-btn {{activeBtn === 'claim' ? 'step1-btn--active' : ''}}"
+        hover-class="none"
+        bindtap="onClaimTap"
+      >
+        我已注册
+      </button>
+      <button
+        class="step1-btn {{activeBtn === 'register' ? 'step1-btn--active' : ''}}"
+        hover-class="none"
+        bindtap="onRegisterTap"
+      >
+        现在注册
+      </button>
+    </view>
+
+    <view class="step1-agreement">
+      <text class="step1-agreement-line">点击以上按钮即表示同意</text>
+      <view class="step1-agreement-line">
+        <text
+          class="step1-agreement-link"
+          catchtap="onOpenLegal"
+          data-type="user"
+        >《用户协议》</text>
+        <text class="step1-agreement-plain">和</text>
+        <text
+          class="step1-agreement-link"
+          catchtap="onOpenLegal"
+          data-type="privacy"
+        >《隐私政策》</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="step1-footer">
+    <text class="step1-buyer-link" bindtap="onGoBuyer">我是买家，去逛逛</text>
+  </view>
+</view>

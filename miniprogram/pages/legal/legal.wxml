@@ -1,0 +1,3 @@
+<scroll-view class="legal-page" scroll-y enhanced show-scrollbar="{{false}}">
+  <text class="legal-content" selectable>{{content}}</text>
+</scroll-view>

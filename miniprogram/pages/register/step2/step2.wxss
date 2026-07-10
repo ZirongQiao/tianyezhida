@@ -1,0 +1,182 @@
+@import "../register-common.wxss";
+
+.type-row {
+  display: flex;
+  gap: 24rpx;
+}
+
+.type-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 16rpx;
+  background: #ffffff;
+  border: 2rpx solid #eeeeee;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+}
+
+.type-card--active {
+  background: #f0fff0;
+  border-color: #4caf50;
+}
+
+.type-card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.type-card-desc {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #999999;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.type-card--active .type-card-title {
+  color: #4caf50;
+}
+
+.name-input-row {
+  display: flex;
+  align-items: stretch;
+  height: 88rpx;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.name-input-field {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+.name-suffix {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #666666;
+  background: #f7f7f7;
+  border-left: 1px solid #eeeeee;
+  box-sizing: border-box;
+}
+
+.address-hint {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 1.6;
+}
+
+.register-picker-value {
+  color: #333333;
+}
+
+.step2-footer {
+  padding: 48rpx 0 calc(48rpx + env(safe-area-inset-bottom));
+}
+
+.step2-footer .register-btn-primary {
+  width: 90%;
+}
+
+.contact-sub-label {
+  display: block;
+  margin-bottom: 16rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #666666;
+}
+
+.contact-sub-label--landline {
+  margin-top: 32rpx;
+}
+
+.contact-block {
+  margin-bottom: 24rpx;
+}
+
+.field-input--invalid {
+  border-color: #e53935 !important;
+}
+
+.field-error {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #e53935;
+  line-height: 1.4;
+}
+
+.contact-add-link {
+  margin-bottom: 8rpx;
+  font-size: 28rpx;
+  color: #4caf50;
+  line-height: 1.4;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.contact-row--landline {
+  align-items: flex-start;
+}
+
+.contact-row-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-delete {
+  flex-shrink: 0;
+  padding: 8rpx 0;
+  font-size: 28rpx;
+  color: #e53935;
+  text-decoration: underline;
+  line-height: 1.4;
+}
+
+.landline-row {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.landline-area {
+  width: 180rpx;
+  flex-shrink: 0;
+}
+
+.landline-number {
+  flex: 1;
+  min-width: 0;
+}
+
+.landline-dash {
+  flex-shrink: 0;
+  font-size: 32rpx;
+  color: #999999;
+  line-height: 1;
+}

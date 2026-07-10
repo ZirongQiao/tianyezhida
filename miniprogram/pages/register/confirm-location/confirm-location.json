@@ -1,0 +1,5 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarBackgroundColor": "#ffffff",
+  "requiredPrivateInfos": ["getLocation"]
+}

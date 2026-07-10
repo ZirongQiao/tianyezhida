@@ -1,0 +1,123 @@
+@import "../register-common.wxss";
+
+.step1-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.step1-header {
+  flex-shrink: 0;
+  margin-top: 120rpx;
+  text-align: center;
+}
+
+.step1-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step1-brand-logo {
+  width: 455rpx;
+  height: 183rpx;
+  display: block;
+  transform: translateX(-10px);
+}
+
+.step1-subtitle {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  color: #999999;
+  text-align: center;
+}
+
+.step1-body {
+  flex: 1;
+  padding: 96rpx 5% 32rpx;
+  box-sizing: border-box;
+}
+
+.step1-question {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.step1-actions {
+  margin-top: 56rpx;
+}
+
+.step1-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 88rpx;
+  min-height: 88rpx;
+  margin: 0 auto 24rpx;
+  padding: 0;
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 88rpx;
+  color: #4caf50;
+  background: #ffffff;
+  border: 2rpx solid #4caf50;
+  border-radius: 48rpx;
+  box-sizing: border-box;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.step1-btn:last-child {
+  margin-bottom: 0;
+}
+
+.step1-btn::after {
+  border: none;
+}
+
+.step1-btn--active {
+  color: #ffffff;
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.step1-agreement {
+  margin-top: 32rpx;
+  text-align: center;
+}
+
+.step1-agreement-line {
+  display: block;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 1.6;
+}
+
+.step1-agreement-plain {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.step1-agreement-link {
+  font-size: 22rpx;
+  color: #2f7df6;
+  text-decoration: underline;
+}
+
+.step1-footer {
+  flex-shrink: 0;
+  padding: 48rpx 0 calc(48rpx + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.step1-buyer-link {
+  font-size: 28rpx;
+  color: #999999;
+}

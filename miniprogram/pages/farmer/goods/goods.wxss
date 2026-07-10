@@ -1,0 +1,28 @@
+@import "../farmer-common.wxss";
+
+.goods-hint {
+  display: block;
+  padding: 0 16px;
+  font-size: 13px;
+  color: #999999;
+}
+
+.goods-list-card {
+  padding: 0 16px;
+}
+
+.goods-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+
+.goods-row--border {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.goods-name {
+  font-size: 14px;
+  color: #333333;
+}

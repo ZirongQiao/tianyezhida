@@ -1,0 +1,110 @@
+<view class="detail-page" wx:if="{{farmer}}">
+  <view class="detail-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="onBack">←</view>
+    <text class="nav-title">{{farmer.name}}</text>
+    <view class="nav-share" bindtap="onShare">分享</view>
+  </view>
+
+  <scroll-view class="detail-scroll" scroll-y>
+    <view class="album-wrap">
+      <block wx:if="{{farmer.hasPhotos}}">
+        <swiper
+          class="album-swiper"
+          indicator-dots="{{false}}"
+          circular
+          bindchange="onAlbumChange"
+        >
+          <swiper-item
+            wx:for="{{farmer.photos}}"
+            wx:key="*this"
+            data-index="{{index}}"
+            bindtap="onPhotoTap"
+          >
+            <image class="album-image" src="{{item}}" mode="aspectFill" />
+          </swiper-item>
+        </swiper>
+        <view class="album-indicator">{{albumCurrent}}/{{albumTotal}}</view>
+      </block>
+      <view wx:else class="album-empty">
+        <text class="album-empty-text">农户暂未上传照片</text>
+      </view>
+    </view>
+
+    <view class="info-card">
+      <view class="info-row">
+        <view class="info-left">
+          <view class="info-name-row">
+            <view class="info-avatar" bindtap="onAvatarTap">
+              <image
+                wx:if="{{farmer.avatarUrl}}"
+                class="info-avatar-img"
+                src="{{farmer.avatarUrl}}"
+                mode="aspectFill"
+              />
+              <text wx:else class="info-avatar-text">{{farmer.avatarInitial}}</text>
+            </view>
+            <view class="info-name-block">
+              <view class="info-name-line">
+                <view class="info-name">{{farmer.name}}</view>
+                <text
+                  class="merchant-type-tag"
+                  style="color: {{farmer.tagColor}}; background: {{farmer.tagBg}};"
+                >{{farmer.typeLabel}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="info-region">{{farmer.regionLine}}</view>
+          <view class="info-detail">{{farmer.detailLine}}</view>
+        </view>
+        <view class="phone-btn" bindtap="onCallPhone">
+          <view class="phone-btn-icon"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="goods-card">
+      <text class="goods-title">今日可售</text>
+      <view
+        wx:for="{{farmer.categoryList}}"
+        wx:for-index="catIndex"
+        wx:key="name"
+        class="goods-row"
+      >
+        <text class="goods-name">{{item.name}}</text>
+        <view
+          class="goods-want-btn {{item.reserved ? 'goods-want-btn--reserved' : ''}}"
+          data-index="{{catIndex}}"
+          bindtap="onWantBuyTap"
+        >
+          {{item.reserved ? '已预约' : '我想买'}}
+        </view>
+        <text class="goods-want-hint">今日已有{{item.wantBuyCount}}人想买</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-actions">
+    <view class="bottom-actions-row">
+      <button class="farmer-nav-btn" open-type="share">
+        <view class="farmer-btn-icon-badge">
+          <image
+            src="/images/icons/share.svg"
+            style="width:40rpx;height:40rpx;"
+            mode="aspectFit"
+          />
+        </view>
+        <text>分享</text>
+      </button>
+      <view class="farmer-nav-btn" bindtap="onNavigate">
+        <view class="farmer-btn-icon-badge">
+          <image
+            src="/images/icons/navigate.svg"
+            style="width:40rpx;height:40rpx;"
+            mode="aspectFit"
+          />
+        </view>
+        <text>导航</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="farmer-page">
+  <view class="farmer-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="farmer-nav-back" bindtap="onBack">←</view>
+    <text class="farmer-nav-title">消息通知</text>
+    <view class="farmer-nav-placeholder"></view>
+  </view>
+
+  <scroll-view class="farmer-scroll" scroll-y>
+    <view wx:if="{{empty}}" class="message-empty">暂无消息</view>
+    <view
+      wx:for="{{messages}}"
+      wx:key="_id"
+      class="farmer-card message-card"
+    >
+      <text class="message-title">{{item.title}}</text>
+      <text class="message-time">{{item.time}}</text>
+    </view>
+  </scroll-view>
+</view>

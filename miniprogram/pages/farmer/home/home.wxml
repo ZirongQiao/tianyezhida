@@ -1,0 +1,54 @@
+<view class="farmer-page">
+  <view class="farmer-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="farmer-nav-placeholder"></view>
+    <text class="farmer-nav-title">农户中心</text>
+    <text class="farmer-nav-exit" bindtap="onExit">退出</text>
+  </view>
+
+  <scroll-view class="farmer-scroll" scroll-y>
+    <view class="home-info-card">
+      <view class="home-avatar">
+        <image
+          wx:if="{{avatarUrl}}"
+          class="home-avatar-img"
+          src="{{avatarUrl}}"
+          mode="aspectFill"
+        />
+        <text wx:else class="home-avatar-text">{{avatarInitial}}</text>
+      </view>
+      <view class="home-info-right">
+        <text class="home-merchant-name">{{merchantName}}</text>
+        <view class="home-status-tag">{{status}}</view>
+      </view>
+      <view class="home-sale-toggle-wrap">
+        <text class="home-sale-label">{{isOnSale ? '正在售卖' : '暂停售卖'}}</text>
+        <view
+          class="home-sale-toggle {{isOnSale ? 'home-sale-toggle--on' : 'home-sale-toggle--off'}}"
+          bindtap="onCustomSaleToggleTap"
+        >
+          <view class="home-sale-toggle-thumb"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="home-menu">
+      <view class="home-menu-item" bindtap="onGoGoods">
+        <text class="home-menu-emoji">📦</text>
+        <text class="home-menu-text">货品管理</text>
+      </view>
+      <view class="home-menu-item" bindtap="onGoProfile">
+        <text class="home-menu-emoji">🏠</text>
+        <text class="home-menu-text">我的主页</text>
+      </view>
+      <view class="home-menu-item home-menu-item--messages" bindtap="onGoMessages">
+        <view wx:if="{{hasMessageUnread}}" class="home-menu-badge"></view>
+        <text class="home-menu-emoji">💬</text>
+        <text class="home-menu-text">消息通知</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="home-buyer-entry" bindtap="onGoBuyer">
+    <text class="home-buyer-entry-text">我是买家，去逛逛</text>
+  </view>
+</view>

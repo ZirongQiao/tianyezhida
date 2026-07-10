@@ -1,0 +1,21 @@
+# 原始大图备份（包外，体积大）
+assets-originals/images/**
+!assets-originals/images/.gitkeep
+!assets-originals/README.md
+
+project.private.config.json
+node_modules/
+cloudfunctions/**/node_modules/
+miniprogram/node_modules/
+.env
+.env.*
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.local
+cloud-db-export/
+*.csv
+*.sql
+dist/
+miniprogram_npm/

@@ -1,0 +1,122 @@
+<view class="register-page step3-page">
+  <view class="register-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="register-nav-back" bindtap="onBack">←</view>
+    <text class="register-nav-title">照片与品类</text>
+    <text class="register-nav-step">4/4</text>
+  </view>
+
+  <view class="register-progress">
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg active"></view>
+    <view class="register-progress-seg active"></view>
+  </view>
+
+  <scroll-view class="step3-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="register-card">
+      <text class="card-title">上传照片</text>
+      <text class="card-desc">展示你的农产品和环境</text>
+      <view class="photo-row">
+        <view
+          wx:for="{{photos}}"
+          wx:key="index"
+          class="photo-box"
+          data-index="{{index}}"
+          bindtap="onChoosePhoto"
+        >
+          <image wx:if="{{item}}" class="photo-img" src="{{item}}" mode="aspectFill" />
+          <text wx:else class="photo-plus">+</text>
+        </view>
+      </view>
+      <view class="avatar-row">
+        <view class="avatar-box" bindtap="onChooseAvatar">
+          <image wx:if="{{avatar}}" class="avatar-img" src="{{avatar}}" mode="aspectFill" />
+          <text wx:else class="avatar-label">头像</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="register-card">
+      <text class="card-title">我能卖什么</text>
+      <text class="card-desc">买家会根据品类找到你</text>
+      <view class="category-list">
+        <view
+          wx:for="{{categories}}"
+          wx:key="name"
+          class="category-row"
+        >
+          <text class="category-name">{{item.name}}</text>
+          <switch
+            checked="{{item.enabled}}"
+            color="#4CAF50"
+            data-index="{{index}}"
+            bindchange="onCategorySwitch"
+          />
+        </view>
+      </view>
+    </view>
+
+    <view class="register-card step3-agreement-card">
+      <text class="card-title">信息展示授权确认</text>
+      <text class="card-desc">提交审核前，请阅读并完成以下授权确认</text>
+
+      <view class="step3-agreement-list">
+        <checkbox-group bindchange="onInfoTruthChange">
+          <label class="step3-agreement-row">
+            <checkbox
+              class="step3-agreement-checkbox"
+              value="infoTruth"
+              checked="{{infoTruthChecked}}"
+            />
+            <text class="step3-agreement-text">我确认上述联系电话、地址、照片及农户信息均由本人自愿提供，内容真实有效。</text>
+          </label>
+        </checkbox-group>
+
+        <checkbox-group bindchange="onDisplayConsentChange">
+          <label class="step3-agreement-row">
+            <checkbox
+              class="step3-agreement-checkbox"
+              value="displayConsent"
+              checked="{{displayConsentChecked}}"
+            />
+            <text class="step3-agreement-text">我同意平台向买家展示上述信息，并用于农户信息展示、联系及导航服务。</text>
+          </label>
+        </checkbox-group>
+
+        <checkbox-group bindchange="onNavigationAwareChange">
+          <label class="step3-agreement-row">
+            <checkbox
+              class="step3-agreement-checkbox"
+              value="navigationAware"
+              checked="{{navigationAwareChecked}}"
+            />
+            <text class="step3-agreement-text">我已知晓买家可能通过平台查看联系方式、地址信息，并依据导航功能到达该地点。</text>
+          </label>
+        </checkbox-group>
+
+        <checkbox-group bindchange="onAgreementPrivacyChange">
+          <label class="step3-agreement-row">
+            <checkbox
+              class="step3-agreement-checkbox"
+              value="agreementPrivacy"
+              checked="{{agreementPrivacyChecked}}"
+            />
+            <view class="step3-agreement-text">
+              <text>我已阅读并同意</text>
+              <text class="step3-agreement-link" catchtap="onOpenLegal" data-type="user">《用户协议》</text>
+              <text>和</text>
+              <text class="step3-agreement-link" catchtap="onOpenLegal" data-type="privacy">《隐私政策》</text>
+            </view>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+
+    <view class="step3-scroll-bottom"></view>
+  </scroll-view>
+
+  <view class="step3-footer">
+    <button class="register-btn-primary" bindtap="onSubmit">提交审核</button>
+    <text class="step3-tip">提交后1-3个工作日内完成审核</text>
+  </view>
+</view>

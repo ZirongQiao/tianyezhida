@@ -1,0 +1,33 @@
+<view class="claim-page">
+  <view class="claim-body">
+    <view class="claim-card">
+      <text class="claim-title">请输入您注册时的联系电话</text>
+
+      <input
+        class="claim-input {{phoneInvalid ? 'claim-input--invalid' : ''}}"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号"
+        value="{{phone}}"
+        disabled="{{submitted}}"
+        bindinput="onPhoneInput"
+      />
+      <text wx:if="{{phoneError}}" class="claim-error">{{phoneError}}</text>
+
+      <button
+        class="claim-btn {{submitted ? 'claim-btn--disabled' : ''}}"
+        hover-class="none"
+        disabled="{{submitting || submitted}}"
+        bindtap="onSubmit"
+      >
+        {{submitted ? '已提交，等待审核' : '提交认领申请'}}
+      </button>
+
+      <text class="claim-tip">提交后1-3个工作日内完成审核。</text>
+    </view>
+  </view>
+
+  <view class="step1-footer">
+    <text class="step1-buyer-link" bindtap="onGoBuyer">我是买家，去逛逛</text>
+  </view>
+</view>

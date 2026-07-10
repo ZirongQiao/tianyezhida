@@ -1,0 +1,29 @@
+<view class="farmer-page">
+  <view class="farmer-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="farmer-nav-back" bindtap="onBack">←</view>
+    <text class="farmer-nav-title">货品管理</text>
+    <view class="farmer-nav-placeholder"></view>
+  </view>
+
+  <scroll-view class="farmer-scroll" scroll-y>
+    <text class="goods-hint">勾选你目前有货的品类，买家会看到</text>
+
+    <view class="farmer-card goods-list-card">
+      <view
+        wx:for="{{categories}}"
+        wx:key="name"
+        class="goods-row {{index < categories.length - 1 ? 'goods-row--border' : ''}}"
+      >
+        <text class="goods-name">{{item.name}}</text>
+        <switch
+          checked="{{item.enabled}}"
+          color="#4CAF50"
+          data-index="{{index}}"
+          bindchange="onCategorySwitch"
+        />
+      </view>
+    </view>
+
+    <button class="farmer-btn-primary" bindtap="onSave">保存</button>
+  </scroll-view>
+</view>

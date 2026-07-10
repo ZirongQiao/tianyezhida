@@ -1,0 +1,71 @@
+<view class="farmer-page">
+  <view class="farmer-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="farmer-nav-back" bindtap="onBack">←</view>
+    <text class="farmer-nav-title">我的主页</text>
+    <view class="farmer-nav-placeholder"></view>
+  </view>
+
+  <scroll-view class="farmer-scroll" scroll-y>
+    <view class="profile-avatar-wrap" bindtap="onChangeAvatar">
+      <view class="profile-avatar">
+        <image
+          wx:if="{{avatarUrl}}"
+          class="profile-avatar-img"
+          src="{{avatarUrl}}"
+          mode="aspectFill"
+        />
+        <text wx:else class="profile-avatar-text">{{avatarInitial}}</text>
+      </view>
+      <text class="profile-avatar-hint">点击更换头像</text>
+    </view>
+
+    <view class="farmer-card profile-form-card">
+      <view class="profile-form-row">
+        <text class="profile-label">商户名称</text>
+        <input
+          class="profile-input"
+          value="{{merchantName}}"
+          bindinput="onNameInput"
+        />
+      </view>
+      <view class="profile-form-row profile-form-row--border">
+        <text class="profile-label">联系电话</text>
+        <input
+          class="profile-input"
+          type="number"
+          value="{{phone}}"
+          bindinput="onPhoneInput"
+        />
+      </view>
+      <view class="profile-readonly-block">
+        <view class="profile-form-row profile-form-row--readonly">
+          <text class="profile-label profile-label--readonly">所在地区</text>
+          <text class="profile-value profile-value--readonly">{{regionText || '—'}}</text>
+        </view>
+        <view class="profile-form-row profile-form-row--border profile-form-row--readonly">
+          <text class="profile-label profile-label--readonly">详细地址</text>
+          <text class="profile-value profile-value--readonly profile-value--address">{{address || '—'}}</text>
+        </view>
+        <text class="profile-address-tip">所在地区和详细地址暂不支持自行修改，如需调整请联系客服。</text>
+      </view>
+    </view>
+
+    <view class="farmer-card">
+      <text class="profile-photos-title">我的照片</text>
+      <view class="profile-photos">
+        <view
+          wx:for="{{photos}}"
+          wx:key="*this"
+          class="profile-photo-box"
+          data-index="{{index}}"
+          bindtap="onChoosePhoto"
+        >
+          <image wx:if="{{item}}" class="profile-photo-img" src="{{item}}" mode="aspectFill" />
+          <text wx:else class="profile-photo-plus">+</text>
+        </view>
+      </view>
+    </view>
+
+    <button class="farmer-btn-primary" bindtap="onSave">保存修改</button>
+  </scroll-view>
+</view>
